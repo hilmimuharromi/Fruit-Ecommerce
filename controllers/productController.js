@@ -65,8 +65,33 @@ const deleteProduct = async (req, res, next) => {
     }
 }
 
+const updateProduct = async (req, res, next) => {
+    const {id} = req.params
+    const {name, slug, image_url, price, stock, discount, description, categoryId} = req.body
+    try{
+        const result = await Product.update({
+            name, slug, image_url, price, stock, discount, description, categoryId
+        }, {
+            where: {
+                id: id
+            },
+            returning: true,
+            plain: true
+        })
+        res.status(200).json({
+            status: 'success',
+            data: result
+        })
+    } catch(err) {
+        res.status(400).json({
+            err
+        })
+    }
+}
+
 module.exports = {
     getAllProducts,
     createProduct,
-    deleteProduct
+    deleteProduct,
+    updateProduct
 }

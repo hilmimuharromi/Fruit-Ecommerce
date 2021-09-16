@@ -26,14 +26,18 @@ const register = async (req, res, next) => {
 
     } catch(err) {
         console.log('user error', err)
-        res.status(400).json({
-            err
-        })
+        next(err)
     }
 }
 
 const login = async(req, res, next) => {
     const {email, password} = req.body
+    const error = {
+        name: 'loginValidation', 
+        status: 400,
+                message: 'please Check your email or password'
+
+    }
     try{
         const user = await User.findOne({
             where: {
@@ -59,23 +63,18 @@ const login = async(req, res, next) => {
                     }
                 })
             } else {
-                res.status(400).json({
-                    status: 'failed',
-                    message: 'please Check your email or password'
-                }) 
+            next(error)
+ 
+               
             }
             console.log('cek pass', truePassword)
         } else {
-            res.status(400).json({
-                status: 'failed',
-                message: 'please Check your email or password'
-            }) 
+            next(error)
         }
     } catch(err) {
         console.log('user login error', err)
-        res.status(400).json({
-            err
-        })
+        next(err)
+        
     }
 }
 
