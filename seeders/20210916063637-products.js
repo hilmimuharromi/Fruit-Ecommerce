@@ -7,7 +7,7 @@ let data = [{
     image_url: 'https://i.imgur.com/0jEmiwl.jpg',
     price: 40000,
     stock: 10,
-    category: 'Lokal',
+    categoryId: 1,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -18,7 +18,7 @@ let data = [{
     image_url: 'https://i.imgur.com/jjrJ1tT.jpg',
     price: 45000,
     stock: 5,
-    category: 'Import',
+    categoryId: 1,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -29,7 +29,7 @@ let data = [{
     image_url: 'https://i.imgur.com/ZiKbwjf.jpg',
     price: 60000,
     stock: 10,
-    category: 'Lokal',
+    categoryId: 1,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -40,7 +40,7 @@ let data = [{
     image_url: 'https://i.imgur.com/5dAvg23.jpg',
     price: 85000,
     stock: 10,
-    category: 'Other',
+    categoryId: 1,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -51,7 +51,7 @@ let data = [{
     image_url: 'https://i.imgur.com/PFCE6Zi.jpg',
     price: 85000,
     stock: 10,
-    category: 'Import',
+    categoryId: 1,
     createdAt: new Date(),
     updatedAt: new Date()
   }

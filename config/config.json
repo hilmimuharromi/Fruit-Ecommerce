@@ -4,7 +4,7 @@
   "development": {
     "username": "postgres",
     "password": "168168",
-    "database": "fruit_ecommerce",
+    "database": "toko_segar",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

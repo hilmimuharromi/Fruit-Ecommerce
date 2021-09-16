@@ -3,14 +3,14 @@ const bcrypt = require('bcrypt')
 
 function hashPassword(password) {
     let salt = bcrypt.genSaltSync(10)
-    return bcrypt.hashSync(password, salt)
+    return bcrypt.hashSync(password.toString(), salt)
 }
 
-function checkPassword(password, hashPassword) {
-    return bcrypt.compareSync(password, hashPassword)
+function verifyPassword(password, hashPassword) {
+    return bcrypt.compareSync(password.toString(), hashPassword)
 }
 
 module.exports = {
     hashPassword,
-    checkPassword
+    verifyPassword
 }

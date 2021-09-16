@@ -1,12 +1,13 @@
 const router = require('express').Router()
-const {register} = require('../controllers/userController')
+const userRouter = require('./userRouter')
 const productRouter = require('./productsRouter')
+
 router.get('/', (req, res) => {
     res.status(200).json({
         status: 'server is running'
     })
 })
-router.use('/products', productRouter)
-router.post('/register', register)
+router.use('/product', productRouter)
+router.use('/', userRouter)
 
 module.exports = router
