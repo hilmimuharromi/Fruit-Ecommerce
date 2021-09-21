@@ -18,8 +18,9 @@ const authentication = async (req, res, next) => {
                email: req.decoded.email
            }
        })
-       console.log(req.decoded)
-       if(verifyUser) return next()
+       if(verifyUser) {
+        return next()
+    }
        else {
         return res.status(403).json({
             message: 'Please Login first'
