@@ -1,4 +1,4 @@
-const {Cart} = require('../models')
+const {Cart, Product} = require('../models')
 
 const getCart = async (req, res, next) => {
     
@@ -7,8 +7,14 @@ const getCart = async (req, res, next) => {
         const result = await Cart.findAll({
             where: {
                 userId: user.id
-            }
+            },
+            include: [
+                {
+                  model: Product,
+                },
+              ],
         })
+        console.log('cart ===>',result)
 
         res.status(200).json({
             status: 'success',
@@ -87,8 +93,37 @@ const saveCart = async (req, res, next) => {
             err
         })
     }
+
+   
 } 
 
+const deleteCart =async (req, res, next) => {
+    const {id} = req.params
+
+    try {
+        const result = await Cart.destroy({
+            where: {
+                id
+            }
+        })
+    
+        
+        res.status(200).json({
+            status: 'success',
+            data: result
+        })
+
+    } catch(err) {
+        console.log('error dari cart', err)
+        res.status(400).json({
+            err
+        })
+    }
+
+   
+
+}
+
 module.exports = {
-    getCart, saveCart
+    getCart, saveCart, deleteCart
 }
