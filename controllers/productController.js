@@ -31,6 +31,27 @@ const getAllProducts = async (req, res, next) => {
   }
 };
 
+const getProductById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const products = await Product.findOne({
+      where: {
+        id
+      },
+    });
+    console.log("get products ===>", products);
+    res.status(200).json({
+      status: "success",
+      data: products,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      err,
+    });
+  }
+};
+
 const createProduct = async (req, res, next) => {
   const {
     name,
@@ -128,6 +149,7 @@ const updateProduct = async (req, res, next) => {
 
 module.exports = {
   getAllProducts,
+  getProductById,
   createProduct,
   deleteProduct,
   updateProduct,
